@@ -22,6 +22,7 @@
 #include <fcntl.h>
 #include <cstdio>
 #include <string>
+#include <cmath>
 
 #include "wiringPi.h"
 #include "wiringPiSPI.h"
@@ -107,7 +108,7 @@ float MAX31865::temperature(float RTDnominal, float refResistor) {
     Z4 = 2 * RTD_B;
 
     temp = Z2 + (Z3 * Rt);
-    temp = (sqrt(temp) + Z1) / Z4;
+    temp = (std::sqrt(temp) + Z1) / Z4;
 
     if (temp >= 0) return temp;
 
